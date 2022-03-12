@@ -1,0 +1,52 @@
+
+Ò»: Models
+    1: python manage.py migrate
+
+    2: python manage.pt makemigrations main
+        --> After we create the models 
+    python manage.py migrate
+
+    3: Add something to our database
+        python manage.py shell
+ 
+        from main.models import Item, ToDoList
+        t = ToDoList("name=Tim\s' List")
+        t.save()
+
+        ToDoList.objects.all()
+        ToDoList.objects.get(id=1)
+        ToDoList.objects.get(name=""Tim's List)
+
+
+        t.item_set.all()
+        t.item_set.create(text="Go to the mall", complete=False)
+        t.item_set.all()
+        t.item_set.get(id=1)
+
+
+¶þ£ºAdmin
+    1: python manage.py shell
+
+    from main.models import Item, ToDoList
+    t = ToDoList.objects.all()
+    t.all()
+    t.filter(name__startswith="tim")
+
+    del_object = t.get(id=1)
+    del_object.delete()
+    t.all() 
+
+    t1 = ToDoList(name="List 1")
+    t1.save()
+    t2 = ToDoList(name="List 2")
+    t2.save()
+    t3 = ToDoList(name="List 3")
+    t3.save()
+
+    2: Create login account
+    python manage.py createsuperuser
+
+    go to admin.py
+
+
+
