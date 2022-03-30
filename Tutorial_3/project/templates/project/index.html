@@ -1,0 +1,26 @@
+{% extends 'project/navbar.html' %}
+
+{% block content %}
+    <h1>This is the home page</h1>    
+
+    <br>
+
+    <a href="project/index.html">Home</a>
+    <a href="project/project.html">Project</a>
+
+    <br>
+
+    <table>
+        {% for project in projects %}
+            <ul>
+                <li>{{ project.id }}</li>
+                <li>{{ project.title }}</li>
+                <li>{{ project.description }}</li>
+            </ul>
+        {% endfor %}
+            
+    </table>
+
+
+    
+{% endblock content %}
