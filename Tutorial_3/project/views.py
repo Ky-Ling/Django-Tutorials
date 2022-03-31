@@ -24,7 +24,6 @@ projectsList = [
 # Create your views here.
 
 def index(request):
-    projects = projectsList
     return render(request, "project/index.html", {
         "projects": projectsList
     })
