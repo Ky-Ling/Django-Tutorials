@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Project
+import uuid
 
 projectsList = [
     {
@@ -20,15 +22,18 @@ projectsList = [
 ]
 
 
-
 # Create your views here.
 
 def index(request):
+    projects = Project.objects.all()
+
     return render(request, "project/index.html", {
-        "projects": projectsList
+        "projects": projects
     })
 
+
 def project(request, pk):
+
     projectObject = None
     for i in projectsList:
         if i["id"] == str(pk):
@@ -39,3 +44,12 @@ def project(request, pk):
         "error": "This is something wrong!"
     })
 
+
+def query(request):
+    projectObj = Project.objects.all()
+
+    tags = projectObj.tags.all()
+
+    return render(request, "project/query.html", {
+        "tag": tags
+    })

@@ -1,13 +1,7 @@
 {% extends 'project/navbar.html' %}
 
 {% block content %}
-    <h1>This is the home page</h1>    
-
-    <br>
-
-    <br>
-
-    <table>
+    <!-- <table>
         {% for project in projects %}
             <ul>
                 <li>{{ project.id }}</li>
@@ -15,9 +9,9 @@
                 <li>{{ project.description }}</li>
             </ul>
         {% endfor %}
-            
-    </table>
+    </table> -->
+    {% for tag in tags %}
+        <span>{{ tag }}</span>
+    {% endfor %}
 
-
-    
 {% endblock content %}
