@@ -1,0 +1,16 @@
+{% extends 'project/navbar.html' %}
+
+{% block content %}
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <p>Are you sure to delete "{{ object }}"</p>
+
+        <a href="{% url 'index' %}">Go Back</a>
+        <input type="submit" value="Delete">
+
+    </form>
+
+
+{% endblock content %}

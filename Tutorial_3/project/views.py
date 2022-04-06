@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Project
-import uuid
+from .forms import ProjectForm
+
 
 projectsList = [
     {
@@ -52,4 +53,62 @@ def query(request):
 
     return render(request, "project/query.html", {
         "tag": tags
+    })
+
+
+def createProject(request):
+    form = ProjectForm()
+
+    if request.method == "POST":
+
+        # Recreate an instance of that form and pass the data from the front end.
+        form = ProjectForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect("index")
+        
+
+    return render(request, "project/project-form.html", {
+        "form": form
+    })
+
+
+
+
+def updateProject(request, pk):
+
+    project1 = Project.objects.get(id=pk)
+    form = ProjectForm(instance=project1)
+
+    if request.method == "POST":
+        form = ProjectForm(request.POST, instance=project1)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect("index")
+
+
+
+    return render(request, "project/project-form.html", {
+        "form": form
+    })
+
+
+
+
+def deleteProject(request, pk):
+    project2 = Project.objects.get(id=pk)
+
+    if request.method == "POST":
+        project2.delete()
+
+        return redirect("index")
+
+
+ 
+    return render(request, "project/delete.html", {
+        "object": project2
     })

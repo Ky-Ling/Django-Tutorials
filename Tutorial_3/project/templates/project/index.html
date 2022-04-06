@@ -3,16 +3,18 @@
 {% block content %}
     <h1>This is the home page</h1>    
 
-    <br>
 
     <br>
 
     <table>
         {% for project in projects %}
             <ul>
-                <li>{{ project.id }}</li>
-                <li>{{ project.title }}</li>
+                <li><a href="{% url 'project' project.id %}">{{ project.title }}</a></li>
                 <li>{{ project.description }}</li>
+                <li><a href="{% url 'update-project' project.id %}">Edit</a></li>
+                <li><a href="{% url 'delete-project' project.id %}">Delete</a></li>
+                <br>
+                <br>
             </ul>
         {% endfor %}
             
