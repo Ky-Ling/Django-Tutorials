@@ -1,8 +1,18 @@
-{% extends 'project/navbar.html' %}
+{% extends 'project/base.html' %}
+
+{% load static %}
 
 {% block content %}
     <h1>This is the home page</h1>    
+    <br>
 
+    <img src="{% static 'images/1.jpg' %}" alt="" style="width: 200px;">
+    <br>
+
+    <a href="/">Home</a>
+    <a href="{% url 'create-project' %}">Add Project</a>
+    <br>
+    <br>
 
     <br>
 

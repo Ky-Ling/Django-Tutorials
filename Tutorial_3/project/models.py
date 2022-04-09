@@ -1,3 +1,6 @@
+from email.policy import default
+from re import T
+from tokenize import blank_re
 from django.db import models
 import uuid
 
@@ -10,7 +13,8 @@ class Project(models.Model):
     # null is for database, blank is for Django
     description = models.TextField(null=True, blank=True)
 
-    # featured_image = 
+    featured_image = models.ImageField(null=True, blank=True)
+
     demo_link = models.CharField(max_length=1000, null=True, blank=True)
     source_link = models.CharField(max_length=1000, null=True, blank=True)
     vote_total = models.IntegerField(default=0)
